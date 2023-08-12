@@ -57,7 +57,7 @@ Specify the target folder as a command-line argument.
 
 ## Contributing
 
-If you would like to contribute to Mask Creator For Inpainting, please open an issue to discuss your ideas or submit a pull request.
+If you would like to contribute to Stable Diffusion EZTweak tools, please open an issue to discuss your ideas or submit a pull request.
 
 ## Author
 
@@ -70,4 +70,4 @@ If you would like to contribute to Mask Creator For Inpainting, please open an i
 
 ## License
 
-Mask Creator For Inpainting is released under the [MIT License](https://opensource.org/licenses/MIT).
+Stable Diffusion EZTweak tools is released under the [MIT License](https://opensource.org/licenses/MIT).
