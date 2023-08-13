@@ -19,28 +19,23 @@ def copy_SD_prompt(from_folder, to_folder):
     print(f"From Folder Contents: {from_files}")
     print(f"To Folder Contents: {to_files}")
 
-    for filename in from_files:
-        if filename in to_files:
-            from_path = os.path.join(from_folder, filename)
-            to_path = os.path.join(to_folder, filename)
+    for from_filename, to_filename in zip(from_files, to_files):
+        from_path = os.path.join(from_folder, from_filename)
+        to_path = os.path.join(to_folder, to_filename)
 
-            from_img = Image.open(from_path)
-            to_img = Image.open(to_path)
+        from_img = Image.open(from_path)
+        to_img = Image.open(to_path)
 
-            if "parameters" in from_img.text:
-                if compare_resolution(from_img, to_img):
-                    print(f"Copying tEXt chunk from {from_path} to {to_path}")
-                    metadata = PngInfo()
-                    metadata.add_text("parameters", from_img.text["parameters"])
-                    to_img.save(to_path, pnginfo=metadata)
-                    print(f"tEXt chunk copied successfully.")
-                else:
-                    print(
-                        f"Resolution mismatch for {from_path} and {to_path}. Stopping."
-                    )
-                    break
-        else:
-            print(f"File {filename} does not exist in 'to' folder.")
+        if "parameters" in from_img.text:
+            if compare_resolution(from_img, to_img):
+                print(f"Copying SD parameters from {from_path} to {to_path}")
+                metadata = PngInfo()
+                metadata.add_text("parameters", from_img.text["parameters"])
+                to_img.save(to_path, pnginfo=metadata)
+                print(f"SD parameters copied successfully.")
+            else:
+                print(f"Resolution mismatch for {from_path} and {to_path}. Stopping.")
+                break
 
 
 def main():
