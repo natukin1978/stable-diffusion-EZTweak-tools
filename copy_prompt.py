@@ -12,6 +12,10 @@ def copy_SD_prompt(from_folder, to_folder):
     from_files = os.listdir(from_folder)
     to_files = os.listdir(to_folder)
 
+    if len(from_files) != len(to_files):
+        print("Error: Number of files in 'from' and 'to' folders is not the same.")
+        return
+
     print(f"From Folder Contents: {from_files}")
     print(f"To Folder Contents: {to_files}")
 
