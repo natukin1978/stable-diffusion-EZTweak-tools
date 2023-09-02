@@ -3,14 +3,16 @@ import sys
 import shutil
 from PIL import Image
 
+
 def extract_model_name(text):
     start = text.find("Model:")
     if start != -1:
         end = text.find(",", start)
         if end != -1:
-            model_name = text[start + len("Model:"):end].strip()
+            model_name = text[start + len("Model:") : end].strip()
             return model_name
     return None
+
 
 def process_images(folder_path):
     for filename in os.listdir(folder_path):
@@ -27,6 +29,7 @@ def process_images(folder_path):
                     shutil.move(file_path, os.path.join(target_folder, filename))
                     print(f"Moved {filename} to {target_folder}")
 
+
 def main():
     if len(sys.argv) != 2:
         print("Usage: python move_file_model.py (folder path)")
@@ -34,6 +37,7 @@ def main():
 
     folder_path = sys.argv[1]
     process_images(folder_path)
+
 
 if __name__ == "__main__":
     main()
